@@ -13,9 +13,8 @@ function calcStdDev(p, n, round=2) {
     )
 }
 
-function calcZScore(a, b) {
-    console.log(a, b)
-    return (a - b) / calcStdDev(inpProb.value, inpSize.value);
+function calcZScore(a) {
+    return (a - inpProb.value) / results.value;
 
 }
 
