@@ -6,7 +6,25 @@
     <title>Stats Helper</title>
 </head>
 <body>
-    <div>
+
+    <div id="selection-box">
+        Select Calculator:
+        <select id="calcSelect">
+            <option value="" default>
+                Select...
+            </option>
+            
+            <option value="zScore">
+                Z-Score
+            </option>
+
+            <option value="stdDev">
+                Standard Deviation
+            </option>
+        </select>
+    </div>
+
+    <div id="content-box">
         <h2>Standard Deviation</h2>
 
         <label>

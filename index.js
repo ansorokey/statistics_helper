@@ -1,3 +1,5 @@
+const contentBox = document.querySelector("#conttent-box");
+const calcSelect = document.querySelector("#calcSelect");
 const inpProb = document.querySelector("#inpProb");
 const inpSize = document.querySelector("#inpSize");
 const btnCalc = document.querySelector("#btnCalc");
@@ -17,6 +19,10 @@ function calcZScore(a) {
     return (a - inpProb.value) / results.value;
 
 }
+
+calcSelect.addEventListener("change", (e) => {
+    console.log(e.target.value)
+})
 
 btnCalc.addEventListener("click", () => {
     let res = calcStdDev(inpProb.value, inpSize.value);
