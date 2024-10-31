@@ -2,6 +2,10 @@ const inpProb = document.querySelector("#inpProb");
 const inpSize = document.querySelector("#inpSize");
 const btnCalc = document.querySelector("#btnCalc");
 const results = document.querySelector("#results");
+const zScoreInpA = document.querySelector("#zScoreInpA");
+const zScoreInpB = document.querySelector("#zScoreInpB");
+const zScoreCalc = document.querySelector("#zScoreCalc");
+const zScoreResults = document.querySelector("#zScoreResults");
 
 function calcStdDev(p, n, round=2) {
     return Math.sqrt(
@@ -9,10 +13,17 @@ function calcStdDev(p, n, round=2) {
     )
 }
 
+function calcZScore(a, b) {
+    console.log(a, b)
+    return (a - b) / calcStdDev(inpProb.value, inpSize.value);
+
+}
+
 btnCalc.addEventListener("click", () => {
     let res = calcStdDev(inpProb.value, inpSize.value);
     results.value = res;
-})
-    
+});
 
-results.value = "Hello world";
+zScoreCalc.addEventListener("click", () => {
+    zScoreResults.value = calcZScore(zScoreInpA.value, zScoreInpB.value);
+});
