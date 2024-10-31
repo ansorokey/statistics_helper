@@ -1,4 +1,4 @@
-const stdDev = ```
+const stdDev = `
     <h2>Standard Deviation</h2>
 
     <label>
@@ -16,7 +16,7 @@ const stdDev = ```
     </label>
 
     <button
-        id="btnCalc"
+        id="calcBtn"
     >
         Calculate
     </button>
@@ -25,9 +25,9 @@ const stdDev = ```
         Result:
         <input id="results" readonly>
     </label>
-```
+`;
 
-const zScore = ```
+const zScore = `
         <h2>Z Score</h2>
         
         <label>
@@ -45,11 +45,39 @@ const zScore = ```
         <input id="inputC" type="number" placeholder="000">
         </label>
 
-        <button id="btnCalc">
+        <button id="calcBtn">
             Calculate
         </button>
 
         <input type="text" id="results" readonly>
-```
+`;
 
-export default {stdDev, zScore};
+function calcStdDev(p, n) {
+    return Math.sqrt(
+        (p*(1-p)) / n
+    )
+}
+
+function calcZScore(exp, acp, n) {
+    return (exp - acp) / calcStdDev(acp, n);
+}
+
+export const statButtons = {
+    stdDev: () => {
+        const inputA = document.querySelector("#inputA");
+        const inputB = document.querySelector("#inputB");
+        const results = document.querySelector("#results");
+        
+        results.value = calcStdDev(inputA.value, inputB.value);
+    },
+    zScore: () => {
+        const inputA = document.querySelector("#inputA");
+        const inputB = document.querySelector("#inputB");
+        const inputC = document.querySelector("#inputC");
+        const results = document.querySelector("#results");
+    
+        results.value = calcZScore(inputA.value, inputB.value, inputC.value);
+    }
+}
+
+export const statForms = {stdDev, zScore,};
