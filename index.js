@@ -10,7 +10,7 @@ function calcStdDev(p, n, round=2) {
 }
 
 btnCalc.addEventListener("click", () => {
-    let res = calcStdDev(npProb.value, inpSize.value);
+    let res = calcStdDev(inpProb.value, inpSize.value);
     results.value = res;
 })
     
