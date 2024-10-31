@@ -54,6 +54,11 @@ const zScore = `
         </button>
 
         <label>
+            Standard Deviation:
+            <input type="text" id="stdDev" readonly>
+        </label>
+
+        <label>
             Results:
             <input type="text" id="results" readonly>
         </label>
@@ -81,8 +86,10 @@ export const statButtons = {
         const inputA = document.querySelector("#inputA");
         const inputB = document.querySelector("#inputB");
         const inputC = document.querySelector("#inputC");
+        const stdDev = document.querySelector("#stdDev");
         const results = document.querySelector("#results");
     
+        stdDev.value = calcStdDev(inputB.value, inputC.value);
         results.value = calcZScore(inputA.value, inputB.value, inputC.value);
     }
 }
