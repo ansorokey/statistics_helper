@@ -32,7 +32,11 @@ const zScore = `
         
         <label>
             Tested Value:
-            <input id="inputA" type="number">
+            <input 
+                id="inputA"
+                type="number"
+                placeholder="0.0"
+            >
         </label>
 
         <label>
@@ -49,7 +53,10 @@ const zScore = `
             Calculate
         </button>
 
-        <input type="text" id="results" readonly>
+        <label>
+            Results:
+            <input type="text" id="results" readonly>
+        </label>
 `;
 
 function calcStdDev(p, n) {

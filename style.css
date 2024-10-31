@@ -1,11 +1,9 @@
 input {
-    max-width: 200px;
+    width: 200px;
 }
 
 button {
-    max-width: 100px;
-    max-height: 50px;
-
+    width: 100px;
     height: 25px;
 }
 
@@ -13,7 +11,9 @@ button {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     padding-left: 20px;
+    padding-bottom: 20px;
 
     border: 2px dashed black;
 }
