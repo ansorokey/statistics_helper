@@ -65,67 +65,72 @@ const zScore = `
 `;
 
 const twoPop = `
-        <h2>Two Population Z-Score</h2>
-        
-        <label>
-            P1 Success
-            <input 
-                id="inputA"
-                type="number"
-                placeholder="00"
-            >
-        </label>
+    <h2>Two Population Z-Score</h2>
+    
+    <label>
+        P1 Success
+        <input 
+            id="inputA"
+            type="number"
+            placeholder="00"
+        >
+    </label>
 
-        <label>
-            P1 Sample Size
-            <input 
-                id="inputB"
-                type="number"
-                placeholder="00"
-            >
-        </label>
+    <label>
+        P1 Sample Size
+        <input 
+            id="inputB"
+            type="number"
+            placeholder="00"
+        >
+    </label>
 
-        <label>
-            P2 Success
-            <input 
-                id="inputC"
-                type="number"
-                placeholder="00"
-            >
-        </label>
+    <label>
+        P2 Success
+        <input 
+            id="inputC"
+            type="number"
+            placeholder="00"
+        >
+    </label>
 
-        <label>
-            P3 Sample Size
-            <input 
-                id="inputD"
-                type="number"
-                placeholder="00"
-            >
-        </label>
+    <label>
+        P3 Sample Size
+        <input 
+            id="inputD"
+            type="number"
+            placeholder="00"
+        >
+    </label>
 
-        <button id="calcBtn">
-            Calculate
-        </button>
+    <button id="calcBtn">
+        Calculate
+    </button>
 
-        <label>
-            Proportion 1
-            <input type="text" id="pro1" readonly>
-        </label>
+    <label>
+        Proportion 1
+        <input type="text" id="pro1" readonly>
+    </label>
 
-        <label>
-            Proportion 2
-            <input type="text" id="pro2" readonly>
-        </label>
+    <label>
+        Proportion 2
+        <input type="text" id="pro2" readonly>
+    </label>
 
-        <label>
-            Pooled Proportion
-            <input type="text" id="poolPro" readonly>
-        </label>
+    <label>
+        Pooled Proportion
+        <input type="text" id="poolPro" readonly>
+    </label>
 
-        <label>
-            Standard Deviation:
-            <input type="text" id="stdDev" readonly>
-        </label>`
+    <label>
+        Standard Deviation:
+        <input type="text" id="stdDev" readonly>
+    </label>
+`
+
+function calcTwoPop() {
+
+}
 
 function calcStdDev(p, n) {
     return Math.sqrt(
@@ -154,6 +159,25 @@ export const statButtons = {
     
         stdDev.value = calcStdDev(inputB.value, inputC.value);
         results.value = calcZScore(inputA.value, inputB.value, inputC.value);
+    },
+    twoPop: () => {
+        const inputA = document.querySelector("#inputA");
+        const inputB = document.querySelector("#inputB");
+        const inputC = document.querySelector("#inputC");
+        const inputD = document.querySelector("#inputD");
+        const pro1 = document.querySelector("#pro1");
+        const pro2 = document.querySelector("#pro2");
+        const poolPro = document.querySelector("#poolPro");
+
+        let p1 = inputA.value / inputB.value;
+        let p2 = inputC.value / inputD.value;
+        let pool = (inputA.value + inputC.value) / (inputB.value + inputD.value);
+
+        pro1.value = p1;
+        pro2.value = p2;
+        poolPro.value = pool;
+
+
     }
 }
 
