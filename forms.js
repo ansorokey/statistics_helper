@@ -64,6 +64,69 @@ const zScore = `
         </label>
 `;
 
+const twoPop = `
+        <h2>Two Population Z-Score</h2>
+        
+        <label>
+            P1 Success
+            <input 
+                id="inputA"
+                type="number"
+                placeholder="00"
+            >
+        </label>
+
+        <label>
+            P1 Sample Size
+            <input 
+                id="inputB"
+                type="number"
+                placeholder="00"
+            >
+        </label>
+
+        <label>
+            P2 Success
+            <input 
+                id="inputC"
+                type="number"
+                placeholder="00"
+            >
+        </label>
+
+        <label>
+            P3 Sample Size
+            <input 
+                id="inputD"
+                type="number"
+                placeholder="00"
+            >
+        </label>
+
+        <button id="calcBtn">
+            Calculate
+        </button>
+
+        <label>
+            Proportion 1
+            <input type="text" id="pro1" readonly>
+        </label>
+
+        <label>
+            Proportion 2
+            <input type="text" id="pro2" readonly>
+        </label>
+
+        <label>
+            Pooled Proportion
+            <input type="text" id="poolPro" readonly>
+        </label>
+
+        <label>
+            Standard Deviation:
+            <input type="text" id="stdDev" readonly>
+        </label>`
+
 function calcStdDev(p, n) {
     return Math.sqrt(
         (p*(1-p)) / n
@@ -94,4 +157,4 @@ export const statButtons = {
     }
 }
 
-export const statForms = {stdDev, zScore,};
+export const statForms = {stdDev, zScore, twoPop};
