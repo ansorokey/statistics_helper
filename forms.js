@@ -73,6 +73,7 @@ const twoPop = `
             id="inputA"
             type="number"
             placeholder="00"
+            value="306"
         >
     </label>
 
@@ -82,6 +83,7 @@ const twoPop = `
             id="inputB"
             type="number"
             placeholder="00"
+            value="364"
         >
     </label>
 
@@ -91,15 +93,17 @@ const twoPop = `
             id="inputC"
             type="number"
             placeholder="00"
+            value="320"
         >
     </label>
 
     <label>
-        P3 Sample Size
+        P2 Sample Size
         <input 
             id="inputD"
             type="number"
             placeholder="00"
+            value="364"
         >
     </label>
 
@@ -109,22 +113,22 @@ const twoPop = `
 
     <label>
         Proportion 1
-        <input type="text" id="pro1" readonly>
+        <input type="number" id="pro1" readonly>
     </label>
 
     <label>
         Proportion 2
-        <input type="text" id="pro2" readonly>
+        <input type="number" id="pro2" readonly>
     </label>
 
     <label>
         Pooled Proportion
-        <input type="text" id="poolPro" readonly>
+        <input type="number" id="poolPro" readonly>
     </label>
 
     <label>
         Standard Deviation:
-        <input type="text" id="stdDev" readonly>
+        <input type="number" id="stdDev" readonly>
     </label>
 `
 
@@ -168,14 +172,18 @@ export const statButtons = {
         const pro1 = document.querySelector("#pro1");
         const pro2 = document.querySelector("#pro2");
         const poolPro = document.querySelector("#poolPro");
+        const stdDev = document.querySelector("#stdDev");
 
-        let p1 = inputA.value / inputB.value;
-        let p2 = inputC.value / inputD.value;
-        let pool = (inputA.value + inputC.value) / (inputB.value + inputD.value);
+        let p1 = +inputA.value / +inputB.value;
+        let p2 = +inputC.value / +inputD.value;
+        let pool = (+inputA.value + +inputC.value) / (+inputB.value + +inputD.value);
+        let se = (p1 - p2) / Math.sqrt((pool * (1 - pool)) / (1 / +inputB.value) + (1 / +inputD.value));
 
         pro1.value = p1;
         pro2.value = p2;
         poolPro.value = pool;
+        stdDev.value = se;
+
 
 
     }
