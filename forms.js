@@ -73,7 +73,6 @@ const twoPop = `
             id="inputA"
             type="number"
             placeholder="00"
-            value="306"
         >
     </label>
 
@@ -83,7 +82,6 @@ const twoPop = `
             id="inputB"
             type="number"
             placeholder="00"
-            value="364"
         >
     </label>
 
@@ -93,7 +91,6 @@ const twoPop = `
             id="inputC"
             type="number"
             placeholder="00"
-            value="320"
         >
     </label>
 
@@ -103,7 +100,6 @@ const twoPop = `
             id="inputD"
             type="number"
             placeholder="00"
-            value="364"
         >
     </label>
 
@@ -131,10 +127,6 @@ const twoPop = `
         <input type="number" id="stdDev" readonly>
     </label>
 `
-
-function calcTwoPop() {
-
-}
 
 function calcStdDev(p, n) {
     return Math.sqrt(
@@ -165,27 +157,29 @@ export const statButtons = {
         results.value = calcZScore(inputA.value, inputB.value, inputC.value);
     },
     twoPop: () => {
-        const inputA = document.querySelector("#inputA");
-        const inputB = document.querySelector("#inputB");
-        const inputC = document.querySelector("#inputC");
-        const inputD = document.querySelector("#inputD");
+        const inputA = +document.querySelector("#inputA").value;
+        const inputB = +document.querySelector("#inputB").value;
+        const inputC = +document.querySelector("#inputC").value;
+        const inputD = +document.querySelector("#inputD").value;
         const pro1 = document.querySelector("#pro1");
         const pro2 = document.querySelector("#pro2");
         const poolPro = document.querySelector("#poolPro");
         const stdDev = document.querySelector("#stdDev");
 
-        let p1 = +inputA.value / +inputB.value;
-        let p2 = +inputC.value / +inputD.value;
-        let pool = (+inputA.value + +inputC.value) / (+inputB.value + +inputD.value);
-        let se = (p1 - p2) / Math.sqrt((pool * (1 - pool)) / (1 / +inputB.value) + (1 / +inputD.value));
+        let p1 = inputA / inputB;
+        let p2 = inputC / inputD;
+        let pool = (inputA + inputC) / (inputB + inputD);
+        let se = 
+            ((p1 - p2) - 0) / 
+            Math.sqrt(
+                (pool * (1 - pool)) * 
+                ((1 / inputB) + (1 / inputD))
+            );
 
         pro1.value = p1;
         pro2.value = p2;
         poolPro.value = pool;
         stdDev.value = se;
-
-
-
     }
 }
 
